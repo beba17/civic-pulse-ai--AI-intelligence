@@ -1,0 +1,6 @@
+{
+  "name": "Civics Plus",
+  "description": "Civics Plus — From Citizen Voice to Actionable Civic Insights. A multilingual civic intelligence platform turning citizen reports into structured priorities for public planners.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
