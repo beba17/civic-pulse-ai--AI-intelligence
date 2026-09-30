@@ -1,1 +1,41 @@
-# Civics Plus\n\n**From Citizen Voice to Actionable Civic Insights**\n\nCivics Plus is a React/Vite civic-intelligence prototype that turns citizen-reported issues into structured civic signals, hotspot views, explainable recommendations, and AI-assisted civic guidance.\n\n## Problem\n\nCivic issues are often reported as isolated complaints. That can make recurring neighborhood needs and supporting evidence harder to see and harder to turn into an actionable civic response.\n\n## Solution\n\nCivics Plus provides a single interface for citizen issue intake, civic signal and hotspot views, evidence filtering, recommendation review, and an AI-assisted civic assistant. The repository is intentionally a prototype, not a live municipal case-management system or government service.\n\n## AI / Gemini use\n\nThe app uses Google `@google/genai` in `src/lib/gemini.ts` and calls **Gemini 2.5 Flash** when `VITE_GEMINI_API_KEY` is configured. The assistant is prompted to provide concise, objective civic guidance and human-review caveats. If Gemini is unavailable, a deterministic local civic-knowledge fallback keeps the demo usable.\n\n## Key features\n\n- **Civic signal dashboard:** prototype citizen signals, categories, statuses, and evidence.\n- **Civic hotspots:** dashboard views grouping related local signals into areas of attention.\n- **Recommendation workflow:** AI-assisted recommendations with a human-review status flow.\n- **Citizen intake:** UI for submitting a civic issue into the prototype workflow.\n- **Evidence filtering:** inspect and filter dashboard signals.\n- **Ask Civics Plus:** natural-language civic guidance powered by Gemini when configured.\n- **Responsive React UI:** React, TypeScript, Vite, Tailwind CSS, Lucide icons, and Motion.\n\n## Architecture\n\nSee [`ARCHITECTURE.md`](ARCHITECTURE.md).\n\n~~~text\nUser -> React/Vite -> Gemini/API layer -> civic insight generation -> dashboard, recommendations, assistant output\n~~~\n\n## Tech stack\n\n- **Frontend:** React 19 + TypeScript\n- **Build:** Vite 8 + Tailwind CSS\n- **AI:** Google Gemini 2.5 Flash via `@google/genai`\n- **UI:** Lucide React + Motion\n- **Deployment:** standard Vite static build (`dist/`)\n\n## Local development\n\nRecommended Node.js version: **22.12+**.\n\n~~~bash\nnpm install\nnpm run dev\n~~~\n\nThe Vite dev server listens on port `3000`. For production build and preview:\n\n~~~bash\nnpm run build\nnpm run preview\n~~~\n\nType-check with `npm run lint`.\n\n## Environment variables\n\nCreate `.env.local`:\n\n~~~bash\nVITE_GEMINI_API_KEY=your_gemini_api_key\n~~~\n\nNever commit real API keys. `.env.example` is the safe template. Because this is a Vite client application, `VITE_GEMINI_API_KEY` is exposed to browser-side code; production should move Gemini calls behind a protected server-side endpoint.\n\n## Deployment\n\n`netlify.toml` configures a standard Vite deployment: `npm run build` with `dist/` as the publish directory. The same build output can be deployed to other Vite-compatible static hosts.\n\n## Live demo and source\n\n- Live demo: https://civics-plus.ai.studio/\n- GitHub: https://github.com/beba17/civic-pulse-ai--AI-intelligence\n\n## Hackathon / community-track alignment\n\nThe current UI identifies the project as a **Code for Communities Hackathon — Cooperation Track** entry and a **Digital Public Good (DPG) prototype**. These describe the project's positioning; they are not claims of government adoption, certification, or DPG approval.\n\n## Responsible AI and limitations\n\n- AI output is decision support, not an official government decision.\n- Dashboard data is seeded/demo data, not a verified live municipal feed.\n- Gemini responses may be incomplete, outdated, or incorrect; verify important scheme and department information with official sources.\n- Consequential civic actions should remain subject to authorized human review.\n\n## Future improvements\n\n1. Move Gemini access behind a protected backend.\n2. Connect authenticated, verified civic datasets.\n3. Add persistent storage and audit logs.\n4. Add stronger input validation, rate limiting, and observability.\n5. Expand multilingual support and accessibility testing.\n6. Add automated build, type-check, and deployment checks in CI.\n
+---
+
+# Product Preview
+
+### Civic Intelligence Dashboard
+
+The main dashboard brings citizen signals, civic hotspots, evidence, and recommendation workflows into a single interface.
+
+<p align="center">
+  <img src="./docs/screenshots/dashboard.png" alt="Civics Plus Civic Intelligence Dashboard" width="900"/>
+</p>
+
+---
+
+### Citizen Intake & Civic Signals
+
+Citizens can submit structured civic concerns and supporting information, allowing community signals to be organized for further analysis.
+
+<p align="center">
+  <img src="./docs/screenshots/citizen-intake.png" alt="Civics Plus Citizen Intake" width="900"/>
+</p>
+
+---
+
+### Ask Civics Plus — AI Assistant
+
+The Gemini-powered assistant provides contextual civic guidance while keeping AI output separate from official government decisions.
+
+<p align="center">
+  <img src="./docs/screenshots/ask-civics-plus.png" alt="Ask Civics Plus AI Assistant" width="900"/>
+</p>
+
+---
+
+### Recommendation & Human Review
+
+Civics Plus keeps a human review step between AI-assisted recommendations and official action.
+
+<p align="center">
+  <img src="./docs/screenshots/recommendations.png" alt="Civics Plus Recommendation and Human Review Workflow" width="900"/>
+</p>
